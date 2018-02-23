@@ -1,34 +1,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000" >
+    android:orientation="vertical" >
 
-    <LinearLayout
-        android:orientation="vertical"
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="EditText" />
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:password="true"
+        android:hint="PassWord" />
+
+    <EditText
+        android:id="@+id/et3"
         android:layout_width="match_parent"
-        android:layout_height="200px"
-        android:background="#00ff00">
+        android:layout_height="wrap_content"
+        android:hint="EditText" />
 
-        <Button
-            android:id="@+id/bitton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button1" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
+    <EditText
+        android:id="@+id/et4"
         android:layout_width="match_parent"
-        android:layout_height="300px"
-        android:background="#0000ff">
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:maxLines="2"
+        android:background="#00ff00"
+        android:padding="20px"
+        android:textSize="25px"
+        android:hint="hint" />
 
-        <Button
-            android:id="@+id/bitton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button2" />
-
-    </LinearLayout>
 </LinearLayout>
