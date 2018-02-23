@@ -1,12 +1,16 @@
 package com.example.pc.myapplication;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ActivityChooserView;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,68 +29,54 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity {
 
+    CustomView customView = null;
+    Button newCanvasBtn = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("MainActivity", "onCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        customView = (CustomView) findViewById(R.id.customView);
+        customView.setmContext(MainActivity.this);
+
+        newCanvasBtn = (Button) findViewById(R.id.bt_new_canvas);
+        newCanvasBtn.setOnClickListener(listener);
+
+    }
+
+    OnClickListener listener = new OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+
+            switch (v.getId()) {
+                case R.id.bt_new_canvas:
+                    customView.initPaint(CustomView.NEW_CAVAS);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override
-    protected void onStart() {
-        // TODO Auto-generated method stub
-        Log.i("MainActivity", "onStart()");
-        super.onStart();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    protected void onResume() {
-        // TODO Auto-generated method stub
-        Log.i("MainActivity", "onResume()");
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        // TODO Auto-generated method stub
-        Log.i("MainActivity", "onPause()");
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        // TODO Auto-generated method stub
-        Log.i("MainActivity", "onStop()");
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        // TODO Auto-generated method stub
-        Log.i("MainActivity", "onDestroy()");
-        super.onDestroy();
-    }
-
-
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.main, menu);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		// Handle action bar item clicks here. The action bar will
-//		// automatically handle clicks on the Home/Up button, so long
-//		// as you specify a parent activity in AndroidManifest.xml.
-//		int id = item.getItemId();
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
-//		return super.onOptionsItemSelected(item);
-//	}
 }
-
-
