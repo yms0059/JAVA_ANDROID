@@ -8,12 +8,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.pc.myapplication.MainActivity" >
-<!---ListView를 생성
-     MainActitvity.java 에서 Item을 ArrayList에 담아 ArrayAdapter를 통해 넘겨준다.
--->
-    <ListView
-        android:id="@+id/lv_01"
+
+    <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:textSize="30px"
+        android:textStyle="bold"
+        android:text="Week Weather"/>
+
+    <ListView
+        android:id="@+id/lv_weather"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="9" />
 
 </LinearLayout>
