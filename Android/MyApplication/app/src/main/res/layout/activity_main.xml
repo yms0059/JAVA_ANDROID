@@ -2,26 +2,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pc.myapplication.MainActivity" >
+    android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1"
-        android:textSize="30px"
-        android:textStyle="bold"
-        android:text="Week Weather"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:text="당신의 취미는?"
+        android:textStyle="bold|italic"
+        android:textSize="20px"/>
 
-    <ListView
-        android:id="@+id/lv_weather"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="9" />
+    <CheckBox
+        android:id="@+id/ch_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:text="운동" />
+
+    <CheckBox
+        android:id="@+id/ch_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:text="요리" />
+
+    <CheckBox
+        android:id="@+id/ch_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:text="독서" />
+
+    <CheckBox
+        android:id="@+id/ch_04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10px"
+        android:text="여행" />
 
 </LinearLayout>
