@@ -22,44 +22,83 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;//체크박스를 위한 import
 import java.util.ArrayList;
+import java.util.concurrent.RunnableFuture;
+
 import android.view.View.OnClickListener;
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
-    CustomView customView = null;
-    Button newCanvasBtn = null;
+    private int mainNum;
+    private int secondNum;
+    private TextView tvMain, tvSecond;
+    private Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        customView = (CustomView) findViewById(R.id.customView);
-        customView.setmContext(MainActivity.this);
+        tvMain = (TextView) findViewById(R.id.tv_main_thread);
+        tvSecond = (TextView) findViewById(R.id.tv_second_thread);
+        btnStart = (Button) findViewById(R.id.bt_start);
 
-        newCanvasBtn = (Button) findViewById(R.id.bt_new_canvas);
-        newCanvasBtn.setOnClickListener(listener);
+        btnStart.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                startNum();
+            }
+        });
 
     }
 
-    OnClickListener listener = new OnClickListener() {
+    private void startNum(){
+        mainNum++;
+
+        //NewThread newThread = new NewThread();
+        SecondRunnable runnable = new SecondRunnable();
+        Thread newThread = new Thread(runnable);
+        newThread.setDaemon(true);
+        newThread.start();
+
+        tvMain.setText("mainNum : " + mainNum);
+        tvSecond.setText("secondNum : " + secondNum);
+    }
+
+   /* class NewThread extends Thread {  //Thread extends해서 쓰레드 돌아가기
 
         @Override
-        public void onClick(View v) {
+        public void run() {
+            while (true) {
+                secondNum++;
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {}
 
-            switch (v.getId()) {
-                case R.id.bt_new_canvas:
-                    customView.initPaint(CustomView.NEW_CAVAS);
-                    break;
-
-                default:
-                    break;
             }
         }
-    };
+
+    }*/
+
+    class SecondRunnable implements Runnable{
+
+        @Override
+        public void run(){
+            while (true){
+                secondNum++;
+                try {
+                    Thread.sleep(500);
+                }catch (Exception e){}
+            }
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
